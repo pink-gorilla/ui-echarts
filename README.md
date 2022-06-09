@@ -14,7 +14,6 @@ clojure -X:goldly
 
 Navigate your webbrowser to port 8080. 
 
-
 ## build your own bundle (for testing):
 
 
