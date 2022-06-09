@@ -1,0 +1,38 @@
+; saved on 2022-06-09 21:55:26
+{:content [{:out "",
+            :id :179a3095-f2fe-4484-aff3-a06b0d79ef5e,
+            :code "(ns demo.notebook.echarts)",
+            :ns "demo.notebook.echarts",
+            :hiccup [:div.p-2.clj-nil [:p "nil"]]}
+           {:out "",
+            :id :c9a79a4f-e6f8-4f75-b79a-840a33c29aa6,
+            :code "^:R\n[:div.bg-blue-300 ; test how background is on different color\n [:p \"this snippet demonstrates to use echarts\"]\n ['ui.echarts/echarts\n  {:xAxis {:type \"category\"\n           :data [\"Mon\" \"Tue\" \"Wed\" \"Thu\" \"Fri\" \"Sat\" \"Sun\"]}\n   :yAxis {:type \"value\"}\n   :series [{:data [150 230 224 218 135 147 260]\n             :type \"line\"}]}]\n [:p \"live goes on!\"]]",
+            :ns "demo.notebook.echarts",
+            :hiccup ^{:R true}
+                    [:div.bg-blue-300
+                     [:p
+                      "this snippet demonstrates to use echarts"]
+                     [ui.echarts/echarts
+                      {:xAxis {:type "category",
+                               :data ["Mon"
+                                      "Tue"
+                                      "Wed"
+                                      "Thu"
+                                      "Fri"
+                                      "Sat"
+                                      "Sun"]},
+                       :yAxis {:type "value"},
+                       :series [{:data [150
+                                        230
+                                        224
+                                        218
+                                        135
+                                        147
+                                        260],
+                                 :type "line"}]}]
+                     [:p "live goes on!"]]}],
+ :meta {:id :eba6d1ae-810c-49b9-8110-48037e2af18f,
+        :eval-time "2022-06-09 21:55:26",
+        :ns "demo.notebook.echarts",
+        :java "17.0.3",
+        :clojure "1.10.3"}}
