@@ -5,10 +5,11 @@
  :deps
  {org.clojure/clojure    {:mvn/version "1.10.3"}}
  :aliases
- {;https://github.com/applied-science/deps-library
-  :release
-  {:extra-deps {applied-science/deps-library {:mvn/version "0.4.0"}}
-   :main-opts ["-m" "applied-science.deps-library"]}
+ {;github ci
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                 slipset/deps-deploy {:mvn/version "0.2.1"}
+                 babashka/fs {:mvn/version "0.0.5"}}
+          :ns-default build}
 
   ; https://github.com/weavejester/cljfmt
   :cljfmt
@@ -23,38 +24,27 @@
   {:extra-deps {clj-kondo/clj-kondo {:mvn/version "RELEASE"}}
    :main-opts ["-m" "clj-kondo.main" "--lint" "src"]}
 
-  :outdated
-  {:extra-deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
-   :main-opts ["-m" "antq.core"]}
 
-  :check
-  {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
-                                 :sha "0ca84df1357d71429243b99908303f45a934654c"}}
-   :main-opts ["-m" "clj-check.check"]}
+  ; demo ui
+  :webly {:exec-fn webly.app.app/webly-build
+          :extra-deps {org.pinkgorilla/webly {:mvn/version "0.5.661"}
+                       org.pinkgorilla/ui-repl {:mvn/version "0.1.94"}}
+          :extra-paths ["demo" "demo/resources"]
+          :exec-args {:config ["demo-config.edn"]
+                      :profile "npm-install"}}
 
-  :garamond
-  {:extra-deps {com.workframe/garamond {:mvn/version "0.4.0"}}
-   :main-opts ["-m" "garamond.main"]}
+  :npm-install {:exec-args {:profile "npm-install"}}
+  :compile {:exec-args {:profile "compile2"}}
+  :release {:exec-args {:profile "release"}}
+  :release-adv {:exec-args {:profile "release-adv"}}
+  :static {:exec-args {:profile "static"}}
+  :ci {:exec-args {:profile "ci"}}
 
-  :goldly
-  {:extra-paths ["target/webly" ; to include the sci-bindings info
-                 "node_modules"
-                 "demo"]
-   :extra-deps {org.pinkgorilla/goldly-docs {:mvn/version "0.4.557"
-                                             :exclusions  [org.pinkgorilla/ui-echarts]}
-                ;org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reagent atoms in cljs
-                }
-   :exec-fn modular.system/start!
-   :exec-args {:profile "jetty"
-               :services "goldly/services.edn"
-               :config  ["webly/config.edn" "goldly/config.edn" "goldly/docs-config.edn"]}}
-
-   :build
-  {:exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "npm-install"}}
-
-
-
+  :run {:exec-fn modular.system/start!
+        :extra-paths ["demo" "demo/resources"]
+        :exec-args {:profile "jetty"
+                    :config  ["demo-config.edn"]
+                    :services "demo-services.edn"}}
 
 
 

@@ -1,5 +1,5 @@
 {:name "ui-echarts"
  ; build
- :lazy-sci true
+ :lazy true
  :cljs-namespace [ui.echarts]
  :cljs-ns-bindings {'ui.echarts {'echarts ui.echarts/echarts}}}
