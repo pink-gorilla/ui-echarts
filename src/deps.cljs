@@ -6,7 +6,7 @@
   "echarts" "^5.5.0"
 
   ; this is only included because of buffer polyfill problem
-   "shadow-cljs" "^2.28.3"
+  "shadow-cljs" "^2.28.3"
 
 ;  
   }}
